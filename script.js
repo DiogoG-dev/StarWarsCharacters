@@ -41,6 +41,40 @@ async function loadCharacters(url) {
             card.onclick = () => {
                 const modal = document.getElementById('modal-container');
                 modal.style.visibility = 'visible';
+
+                const modalContent = document.getElementById('modal-content');
+                modalContent.innerHTML = ''
+
+                const characterImage = document.createElement('div');
+                characterImage.style.backgroundImage = `url('./assets/img/people/${character.url.replace(/\D/g, "")}.jpg')`;
+                characterImage.className = 'character-image';
+
+                const name = document.createElement('span');
+                name.className = 'character-details'
+                name.innerText = `Nome: ${character.name}`
+
+                const height = document.createElement('span');
+                height.className = 'character-details'
+                height.innerText = `Altura: ${convertHeight(character.height)}`
+
+                const mass = document.createElement('span');
+                mass.className = 'character-details'
+                mass.innerText = `Peso: ${convertMass(character.mass)}`
+
+                const eyerColor = document.createElement('span');
+                eyerColor.className = 'character-details'
+                eyerColor.innerText = `Cor dos olhos: ${convertEyerColor(character.eye_color)}`
+
+                const birthYear = document.createElement('span');
+                birthYear.className = 'character-details'
+                birthYear.innerText = `Nascimento: ${convertBirthYear(character.birth_year)}`
+
+                modalContent.appendChild(characterImage)
+                modalContent.appendChild(name)
+                modalContent.appendChild(height)
+                modalContent.appendChild(mass)
+                modalContent.appendChild(eyerColor)
+                modalContent.appendChild(birthYear)
             }
 
             mainContent.appendChild(card);
@@ -92,4 +126,45 @@ async function loadPreviousPage() {
 function hideModal() {
     const modal = document.getElementById('modal-container')
     modal.style.visibility = 'hidden'
+}
+
+function convertEyerColor(eyerColor) {
+    const cores = {
+        blue: 'azul',
+        brown: 'castanho',
+        green: 'verde',
+        yellow: 'amarelo',
+        black: 'preto',
+        pink: 'rosa',
+        red: 'vermelho',
+        orange: 'laranja',
+        hazel: 'avela',
+        unknown: 'desconhecida'
+    };
+
+    return cores[eyerColor.toLowerCase()] || eyerColor
+}
+
+function convertHeight(height) {
+    if (height === 'unknown') {
+        return 'desconhecida'
+    }
+
+    return (height / 100).toFixed(2);
+}
+
+function convertMass(mass) {
+    if (mass === 'unknown') {
+        return 'desconhecido'
+    }
+
+    return `${mass} kg`
+}
+
+function convertBirthYear(birthYear) {
+    if (birthYear === 'unknown') {
+        return 'desconhecido'
+    }
+
+    return birthYear
 }
