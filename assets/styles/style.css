@@ -157,3 +157,27 @@ footer {
 .copyrigth {
     font-weight: 500;
 }
+
+.modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    padding: 30px 10px;
+    width: 25vw;
+    height: 70vh;
+    background-color: #0d0d0d;
+    border-radius: 10px;
+}
