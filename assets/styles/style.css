@@ -83,8 +83,8 @@ h2 {
     cursor: pointer;
     transition: 0.5s;
     padding: 5px;
-    width: 250px;
-    height: 450px;
+    width: 266px;
+    height: 400px;
     background-position: 50% 50%;
     background-size: cover;
 }
@@ -107,6 +107,7 @@ cards:hover {
     font-family: 'Star Wars', sans-serif;
     color: gold;
     font-size: 1rem;
+    text-align: center;
 }
 
 .buttons {
@@ -118,8 +119,8 @@ cards:hover {
 }
 
 button {
-    width: 70px;
-    height: 25px;
+    width: 100px;
+    height: 30px;
     background-color: gold;
     color: black;
     font-weight: 700;
@@ -177,7 +178,7 @@ footer {
     row-gap: 15px;
     padding: 30px 10px;
     width: 25vw;
-    height: 70vh;
+    height: 65vh;
     background-color: #0d0d0d;
     border-radius: 10px;
 }
@@ -195,4 +196,46 @@ footer {
     font-size: 1rem;
     font-weight: lighter;
     color: gold;
+}
+
+/* Notebook */
+@media (max-width: 1450px) {
+    .cards {
+    width: 170px;
+    height: 255px;
+    }
+    .character-name {
+        font-size: 0.75rem;
+    }
+    .character-image {
+        width: 150px;
+        height: 150px;
+    }
+    .character-details {
+        font-size: 0.75rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .cards {
+        width: 200px;
+        height: 300px;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Smartphone Retrato*/
+@media (max-width: 768px) {
+
+}
+
+/* Smartphone Paisagem*/
+@media (max-width: 576px) {
+
 }
