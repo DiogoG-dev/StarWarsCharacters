@@ -37,6 +37,9 @@ async function loadCharacters(url) {
         // Itera sobre cada personagem, com "character" contendo
         // um novo objeto do array "results" a cada iteração
         responseJson.results.forEach((character) => {
+
+            // INÍCIO CARD
+
             // Cria um card para cada personagem, adicionando uma class compartilhada e 
             // a image do seu respectivo personagens com base no id (url transformada)
             const card = document.createElement('div')
@@ -57,11 +60,15 @@ async function loadCharacters(url) {
             // Relaciona a div 'character-name-bg' como filha da div 'cards
             card.appendChild(characterNameBg);
 
+            // FIM CARD
+            
+            // INICIO MODAL
+
             // A clicar em card executa a função seguinte
             card.onclick = () => {
                 // Contém o modal-container e o torna visível
-                const modal = document.getElementById('modal-container');
-                modal.style.visibility = 'visible';
+                const modalContainer = document.getElementById('modal-container');
+                modalContainer.style.visibility = 'visible';
 
                 // Contém o modal-content e limpa seu conteúdo
                 const modalContent = document.getElementById('modal-content');
@@ -76,6 +83,11 @@ async function loadCharacters(url) {
                 const name = document.createElement('span');
                 name.className = 'character-details'
                 name.innerText = `Nome: ${character.name}`
+
+                // Cria um span que recebe a idade do personagem convertida
+                const birthYear = document.createElement('span');
+                birthYear.className = 'character-details'
+                birthYear.innerText = `Nascimento: ${convertBirthYear(character.birth_year)}`
 
                 // Cria um span que recebe a altura do personagem convertida
                 const height = document.createElement('span');
@@ -92,22 +104,25 @@ async function loadCharacters(url) {
                 eyerColor.className = 'character-details'
                 eyerColor.innerText = `Cor dos olhos: ${convertEyerColor(character.eye_color)}`
 
-                // Cria um span que recebe a idade do personagem convertida
-                const birthYear = document.createElement('span');
-                birthYear.className = 'character-details'
-                birthYear.innerText = `Nascimento: ${convertBirthYear(character.birth_year)}`
-
                 // Relaciona a div e os spans anterior como sendo tags filha do modal
-                modalContent.appendChild(characterImage)
-                modalContent.appendChild(name)
-                modalContent.appendChild(height)
-                modalContent.appendChild(mass)
-                modalContent.appendChild(eyerColor)
-                modalContent.appendChild(birthYear)
+                modalContent.appendChild(characterImage);
+                modalContent.appendChild(name);
+                modalContent.appendChild(birthYear);
+                modalContent.appendChild(height);
+                modalContent.appendChild(mass);
+                modalContent.appendChild(eyerColor);
+
+                // Esconde o modal
+                modalContainer.onclick = () => {
+                    // A deixa invisivel
+                    const modal = document.getElementById('modal-container')
+                    modal.style.visibility = 'hidden'
+                }
             }
 
             // Relaciona a div card como tag filha da div mainContent
             mainContent.appendChild(card);
+            // FIM MODAL
         });
 
         // Armazena os botões de anterio e voltar
@@ -123,6 +138,9 @@ async function loadCharacters(url) {
         // Se existir uma página anterior mostra o botão, se não, esconde
         backButton.style.visibility = responseJson.previous? "visible" : "hidden";
 
+        // Se existir uma página seguinte mostra o botão, se não, esconde
+        nextButton.style.visibility = responseJson.next? "visible" : "hidden";
+
         // Repassa a url recebida como sendo a atual
         currentPageUrl = url
     } catch (error) {
@@ -131,7 +149,7 @@ async function loadCharacters(url) {
     }
 }
 
-// Avançar página, mais 10 personagens
+// Avança página, mais 10 personagens
 async function loadNextPage() {
     // Se não existir url não faça nada
     if (!currentPageUrl) return;
@@ -149,7 +167,7 @@ async function loadNextPage() {
     }
 }
 
-// Voltaar página, os 10 personagens anteriores
+// Volta página, os 10 personagens anteriores
 async function loadPreviousPage() {
     // Se não existir url não faça nada
     if (!currentPageUrl) return;
@@ -167,29 +185,13 @@ async function loadPreviousPage() {
     }
 }
 
-// Chamada quando clicada (no html)
-function hideModal() {
-    // A deixa invisivel
-    const modal = document.getElementById('modal-container')
-    modal.style.visibility = 'hidden'
-}
+// Converte a data de nascimento 'unknown' para 'desconhecida
+function convertBirthYear(birthYear) {
+    if (birthYear === 'unknown') {
+        return 'desconhecido'
+    }
 
-// Converte a cor dos olhos
-function convertEyerColor(eyerColor) {
-    const cores = {
-        blue: 'azul',
-        brown: 'castanho',
-        green: 'verde',
-        yellow: 'amarelo',
-        black: 'preto',
-        pink: 'rosa',
-        red: 'vermelho',
-        orange: 'laranja',
-        hazel: 'avela',
-        unknown: 'desconhecida'
-    };
-
-    return cores[eyerColor.toLowerCase()] || eyerColor
+    return birthYear
 }
 
 // Converte a altura em duas casas decimais
@@ -210,11 +212,21 @@ function convertMass(mass) {
     return `${mass} kg`
 }
 
-// Converte a data de nascimento 'unknown' para 'desconhecida
-function convertBirthYear(birthYear) {
-    if (birthYear === 'unknown') {
-        return 'desconhecido'
-    }
+// Converte a cor dos olhos
+function convertEyerColor(eyerColor) {
+    const cores = {
+        blue: 'azul',
+        brown: 'castanho',
+        green: 'verde',
+        yellow: 'amarelo',
+        black: 'preto',
+        white: 'branco',
+        pink: 'rosa',
+        red: 'vermelho',
+        orange: 'laranja',
+        hazel: 'avela',
+        unknown: 'desconhecida'
+    };
 
-    return birthYear
+    return cores[eyerColor.toLowerCase()] || eyerColor
 }
