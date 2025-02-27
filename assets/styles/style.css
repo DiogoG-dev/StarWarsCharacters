@@ -198,6 +198,10 @@ footer {
     color: gold;
 }
 
+.social-media-footer {
+    display: none;
+}
+
 /* Notebook */
 @media (max-width: 1450px) {
     .cards {
@@ -232,10 +236,43 @@ footer {
 
 /* Smartphone Retrato*/
 @media (max-width: 768px) {
-
-}
-
-/* Smartphone Paisagem*/
-@media (max-width: 576px) {
-
+    .logo-img {
+        width: 30%;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+    .social-media {
+        display: none;
+    }
+    .main-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cards {
+        width: 150px;
+        height: 225px;
+    }
+    h2 {
+        font-size: 0.7rem;
+    }
+    button {
+        width: 80px;
+        height: 25px;
+    }
+    .footer-logo {
+        font-size: 0.8rem;
+    }
+    .copyrigth {
+        font-size: 0.55rem;
+    }
+    .social-media-footer {
+        display: flex;
+        flex-direction: column;
+    }
+    a, i{
+        font-size: 0.5rem;
+    }
+    a:hover {
+        color: gold;
+    }
 }
