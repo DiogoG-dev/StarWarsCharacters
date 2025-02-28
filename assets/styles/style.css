@@ -264,14 +264,14 @@ footer {
         font-size: 1.2rem;
     }
     .copyrigth {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     .social-media-footer {
         display: flex;
         flex-direction: column;
     }
     a, i{
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     i:hover {
         color: white;
