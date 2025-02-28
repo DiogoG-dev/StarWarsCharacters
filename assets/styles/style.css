@@ -232,6 +232,10 @@ footer {
     h2 {
         font-size: 1.2rem;
     }
+    button:hover {
+        background-color: gold;
+        color: #000;
+    }
 }
 
 /* Smartphone Retrato*/
@@ -275,5 +279,9 @@ footer {
     }
     i:hover {
         color: white;
+    }
+    button:hover {
+        background-color: gold;
+        color: #000;
     }
 }
