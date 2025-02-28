@@ -261,19 +261,19 @@ footer {
         height: 25px;
     }
     .footer-logo {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
     }
     .copyrigth {
-        font-size: 0.55rem;
+        font-size: 0.8rem;
     }
     .social-media-footer {
         display: flex;
         flex-direction: column;
     }
     a, i{
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
-    a:hover {
-        color: gold;
+    i:hover {
+        color: white;
     }
 }
