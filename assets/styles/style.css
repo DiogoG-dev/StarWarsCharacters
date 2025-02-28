@@ -194,7 +194,6 @@ footer {
 .character-details {
     font-family: 'Star Wars', sans-serif;
     font-size: 1rem;
-    font-weight: lighter;
     color: gold;
 }
 
@@ -235,6 +234,17 @@ footer {
     button:hover {
         background-color: gold;
         color: #000;
+    }
+    .character-image {
+        width: 250px;
+        height: 250px;
+    }
+    .character-details {
+        font-size: 1.2rem;
+    }
+    .modal-content {
+    width: 70vw;
+    height: 50vh;
     }
 }
 
@@ -283,5 +293,16 @@ footer {
     button:hover {
         background-color: gold;
         color: #000;
+    }
+    .modal-content {
+    width: 70vw;
+    height: 45vh;
+    }
+    .character-image {
+        width: 150px;
+        height: 150px;
+    }
+    .character-details {
+        font-size: 0.75rem;
     }
 }
