@@ -17,9 +17,9 @@ O **StarWarsCharacters** é uma página com a finalidade de apresntar os persona
 
 ## 💻 Tecnologias Utilizadas
 
-- **HTML5**
-- **CSS3** (incluindo Flexbox e Grid)
-- **JAVASCRIPT**
+- **HTML**
+- **CSS**
+- **JAVASCRIPT**: Async Functions, Fetch, DOM, WINDOW, try e catch.
 - **API**: Conexão com API pública contendo informações dos personagens.
 
 ## ⬇️ Instalação
