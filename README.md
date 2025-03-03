@@ -33,7 +33,7 @@ Para rodar o projeto localmente em sua máquina, siga os passos abaixo:
    git clone https://github.com/diogog-dev/StarWarsCharacters.git
 2. Navegue até o diretório do projeto:
    ```bash
-   cd BatmanPage
+   cd StarWarsCharacters
 3. Abra o arquivo index.html em seu navegador de preferência:
    ```bash
    open index.html  # no macOS
