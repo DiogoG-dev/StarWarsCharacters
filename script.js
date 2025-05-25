@@ -1,4 +1,4 @@
-let currentPageUrl = 'https://swapi.dev/api/people/';
+let currentPageUrl = 'https://swapi.tech/api/people/';
 
 // Ao acessar a página:
 // - Tentará carregar e mostrar os 10 primeiros personagens
