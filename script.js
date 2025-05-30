@@ -22,6 +22,13 @@ window.onload = async () => {
     backButton.addEventListener('click', loadPreviousPage)
 };
 
+async function loadProperties(urlProperties) {
+    const response = await fetch(urlProperties);
+    const responseJson = await response.json();
+
+    return (responseJson.result.properties);
+}
+
 // Mostra cads de 10 personagens e suas informações a 
 // clicar no card
 async function loadCharacters(url) {
@@ -36,7 +43,7 @@ async function loadCharacters(url) {
 
         // Itera sobre cada personagem, com "character" contendo
         // um novo objeto do array "results" a cada iteração
-        responseJson.results.forEach((character) => {
+        responseJson.results.forEach( async (character) => {
 
             // INÍCIO CARD
 
@@ -50,10 +57,15 @@ async function loadCharacters(url) {
             const characterNameBg = document.createElement('div');
             characterNameBg.className = 'character-name-bg';
 
+            // 
+            const urlProperties = character.url;
+
+            const resultsProperties = await loadProperties(urlProperties);
+
             // Cria um span que recebe o nome do personagem
             const charactername = document.createElement('span');
             charactername.className = 'character-name'
-            charactername.innerText =  `${character.name}`
+            charactername.innerText =  `${resultsProperties.name}`
 
             // Relaciona o span 'character-name' como tag filha da div 'character-name-bg'
             characterNameBg.appendChild(charactername);
@@ -76,33 +88,33 @@ async function loadCharacters(url) {
 
                 // Cria uma div que recebe a imagem do personagem com base no id (url transformada)
                 const characterImage = document.createElement('div');
-                characterImage.style.backgroundImage = `url('./assets/img/people/${character.url.replace(/\D/g, "")}.jpg')`;
+                characterImage.style.backgroundImage = `url('./assets/img/people/${resultsProperties.url.replace(/\D/g, "")}.jpg')`;
                 characterImage.className = 'character-image';
 
                 // Cria um span que recebe o nome do personagem
                 const name = document.createElement('span');
                 name.className = 'character-details'
-                name.innerText = `Nome: ${character.name}`
+                name.innerText = `Nome: ${resultsProperties.name}`
 
                 // Cria um span que recebe a idade do personagem convertida
                 const birthYear = document.createElement('span');
                 birthYear.className = 'character-details'
-                birthYear.innerText = `Nascimento: ${convertBirthYear(character.birth_year)}`
+                birthYear.innerText = `Nascimento: ${convertBirthYear(resultsProperties.birth_year)}`
 
                 // Cria um span que recebe a altura do personagem convertida
                 const height = document.createElement('span');
                 height.className = 'character-details'
-                height.innerText = `Altura: ${convertHeight(character.height)}`
+                height.innerText = `Altura: ${convertHeight(resultsProperties.height)}`
 
                 // Cria um span que recebe o peso do personagem convertido
                 const mass = document.createElement('span');
                 mass.className = 'character-details'
-                mass.innerText = `Peso: ${convertMass(character.mass)}`
+                mass.innerText = `Peso: ${convertMass(resultsProperties.mass)}`
 
                 // Cria um span que recebe a cor dos olhos do personagem convertida
                 const eyerColor = document.createElement('span');
                 eyerColor.className = 'character-details'
-                eyerColor.innerText = `Cor dos olhos: ${convertEyerColor(character.eye_color)}`
+                eyerColor.innerText = `Cor dos olhos: ${convertEyerColor(resultsProperties.eye_color)}`
 
                 // Relaciona a div e os spans anterior como sendo tags filha do modal
                 modalContent.appendChild(characterImage);
