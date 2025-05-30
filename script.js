@@ -22,6 +22,8 @@ window.onload = async () => {
     backButton.addEventListener('click', loadPreviousPage)
 };
 
+
+// Captura as caracteristicas dos personagens
 async function loadProperties(urlProperties) {
     const response = await fetch(urlProperties);
     const responseJson = await response.json();
@@ -57,9 +59,10 @@ async function loadCharacters(url) {
             const characterNameBg = document.createElement('div');
             characterNameBg.className = 'character-name-bg';
 
-            // 
+            // Capturando a url das características do personagem
             const urlProperties = character.url;
 
+            // Buscando as caracteristicas
             const resultsProperties = await loadProperties(urlProperties);
 
             // Cria um span que recebe o nome do personagem
